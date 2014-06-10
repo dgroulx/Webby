@@ -10,20 +10,29 @@
 
 @interface SBSViewController ()
 
+@property (weak, nonatomic) IBOutlet UIWebView *webby;
+
 @end
 
 @implementation SBSViewController
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  NSURLRequest *joinRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://workthefactory.com/membership/"]];
+  [self.webby loadRequest:joinRequest];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 @end
